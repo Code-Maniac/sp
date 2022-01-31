@@ -1,0 +1,4 @@
+#!/bin/bash
+
+chmod 755 ./sp
+sudo cp ./sp /usr/local/bin/sp
