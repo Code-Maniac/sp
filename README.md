@@ -1,9 +1,15 @@
 # sp
 Simple script to swap the location of two files
 
+## Installation
+Run the install script
+```bash
+sudo ./install
+```
+
 ## Usage
 ```bash
-sp [file1] [file2]
+sp FILE1 FILE2
 ```
 
 ## License
