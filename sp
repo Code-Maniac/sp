@@ -39,9 +39,22 @@ if [[ $# -ge 2 ]]; then
     TEMPFILE=$(mktemp)
 
     # now do the swap
-    mv ${FILE1} ${TEMPFILE}
-    mv ${FILE2} ${FILE1}
-    mv ${TEMPFILE} ${FILE2}
+    if ! mv ${FILE1} ${TEMPFILE}; then
+        echo 'Could not move ${FILE1} to temporary location'
+        exit 1
+    elif ! mv ${FILE2} ${FILE1}; then
+        echo 'Could not move ${FILE2} to ${FILE1}'
+        # move temp file back to it's original position
+        mv ${TEMPFILE} ${FILE1}
+        exit 1
+    elif ! mv ${TEMPFILE} ${FILE2}; then
+        echo 'Could not move ${FILE1} to ${FILE2}'
+        # here we've gone a bit far so what should I do?
+        exit 1
+    fi
+
+    # everything was successful
+    exit 0
 else
     echo 'Swap requires 2 arguments <FILE1> <FILE2>'
     exit 1
