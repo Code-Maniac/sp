@@ -13,4 +13,4 @@ sp FILE1 FILE2
 ```
 
 ## License
-[MIT](hhttps://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/)
